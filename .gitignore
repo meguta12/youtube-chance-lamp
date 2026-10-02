@@ -1,0 +1,10 @@
+.DS_Store
+NOTES.md
+REPO-NOTES.md
+検証記録.md
+配置修正_検証.md
+assets/生成記録.md
+*.zip
+.env
+.env.*
+node_modules/

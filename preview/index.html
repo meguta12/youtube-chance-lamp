@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>伸びる!? CHANCE 設定</title><link rel="stylesheet" href="../popup.css"></head>
+<body class="preview">
+  <header><span class="eyebrow">YouTube チャンスランプ</span><h1>伸びる!? CHANCE<span>倍率を見つける。レバーで告知。</span></h1><p class="preview-intro">こちらは光と音の試聴画面です。<br>YouTubeでは、視聴ページのボタン間と動画一覧のサムネイル上に表示します。</p></header>
+  <main>
+    <section class="demo-section"><h2>光と音を試す <span class="demo-badge">デモ</span></h2><p>色を選んで、レバーを引いてください。</p><div class="demo-choices" aria-label="体験する色">
+      <button type="button" data-demo="none">通常</button><button type="button" data-demo="green">緑</button><button type="button" data-demo="red">赤</button><button type="button" data-demo="gold">金</button><button type="button" data-demo="rainbow" aria-pressed="true">虹</button>
+    </div><div id="demo"></div><details class="sample-sounds"><summary>告知音だけ試聴する</summary><p>音源の試聴。レバーを引くと、設定した音量で告知します。</p><label>緑：以前の赤の音<audio controls preload="none" src="sounds/green.wav"></audio></label><label>赤：Max bet<audio controls preload="none" src="sounds/red.mp3"></audio></label><label>金：reba<audio controls preload="none" src="sounds/gold.mp3"></audio></label><label>虹：アイムジャグラー（ガコッ）<audio controls preload="none" src="sounds/rainbow.wav"></audio></label></details></section>
+    <form id="settings">
+      <section><h2>表示とサウンド</h2>
+        <label class="switch"><span>ランプを表示する</span><input type="checkbox" id="enabled" checked></label>
+        <label class="switch"><span>動画一覧にも小型ランプを表示</span><input type="checkbox" id="showCards" checked></label>
+        <label class="switch"><span>最初からランプを点灯（音なし）</span><input type="checkbox" id="autoLight"></label>
+        <p>オン：表示中の動画を自動判定。オフ：視聴ページはレバー、一覧はランプをクリックして判定します。</p>
+        <label class="switch"><span>ミュート</span><input type="checkbox" id="muted"></label>
+        <label for="volume" class="volume-label">告知音量 <output id="volume-value">35%</output></label><input type="range" id="volume" min="0" max="100" value="35">
+        <label class="switch"><span>動きを控えめにする</span><input type="checkbox" id="reducedMotion"></label>
+      </section>
+      <section><h2>点灯する倍率</h2><p>再生数 ÷ 登録者数。下の順に大きく設定します。</p>
+        <div class="thresholds">
+          <label><span class="dot green"></span>緑<input id="green" type="number" min="0" max="1000000" step="any" value="1" required><span>倍を超える</span></label>
+          <label><span class="dot red"></span>赤<input id="red" type="number" min="0" max="1000000" step="any" value="3" required><span>倍以上</span></label>
+          <label><span class="dot gold"></span>金<input id="gold" type="number" min="0" max="1000000" step="any" value="10" required><span>倍以上</span></label>
+          <label><span class="dot rainbow"></span>虹<input id="rainbow" type="number" min="0" max="1000000" step="any" value="30" required><span>倍以上</span></label>
+        </div>
+      </section>
+      <div class="form-actions"><button class="save" type="submit">設定を保存</button><button id="reset" type="button">初期値に戻す</button></div>
+      <p id="status" role="status" aria-live="polite"></p>
+    </form>
+    <footer>登録者数の丸め表示による概算です。<br>ランプは現在の倍率を示します。</footer>
+  </main>
+  <script src="../core.js"></script><script src="../effects.js"></script><script src="../chance-ui.js"></script><script src="../popup.js"></script>
+</body></html>
